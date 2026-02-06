@@ -20,3 +20,8 @@ keymap.set("n", "<A-h>", ":tabprevious<CR>", opts)
 keymap.set("n", "<A-l>", ":tabnext<CR>", opts)
 keymap.set("n", "<A-k>", ":tabnew<CR>", opts)
 keymap.set("n", "<A-j>", ":tabclose<CR>", opts)
+ -- Mapeia o <leader>c para a função nativa de comentar linha
+vim.keymap.set("n", "<leader>c", "gcc", { remap = true, desc = "Comentar linha" })
+
+-- Mapeia o <leader>c para comentar a seleção no modo Visual
+vim.keymap.set("x", "<leader>c", "gc", { remap = true, desc = "Comentar seleção" })

@@ -2,7 +2,7 @@ local options = {
   shiftwidth = 4,
   tabstop = 4,
   autoindent = false,
-  timeoutlen = 200,
+  timeoutlen = 300,
   -- Adicione outras aqui
   number = true,
   relativenumber = true,
