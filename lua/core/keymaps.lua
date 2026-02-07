@@ -44,3 +44,13 @@ vim.keymap.set("n", "<leader>c", "gcc", { remap = true, desc = "Comentar linha" 
 
 -- Mapeia o <leader>c para comentar a seleção no modo Visual
 vim.keymap.set("x", "<leader>c", "gc", { remap = true, desc = "Comentar seleção" })
+
+-- Navegar entre arquivos abertos (Buffers)
+vim.keymap.set("n", "<S-L>", ":bnext<CR>", { desc = "Próximo buffer" })
+vim.keymap.set("n", "<S-H>", ":bprevious<CR>", { desc = "Buffer anterior" })
+
+-- Fechar o arquivo atual sem fechar o Neovim
+vim.keymap.set("n", "<leader>x", ":bd<CR>", { desc = "Fechar buffer atual" })
+
+-- Limpa os destaques da busca (o amarelado) ao apertar Esc
+vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>")
