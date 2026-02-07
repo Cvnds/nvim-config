@@ -5,6 +5,25 @@ local opts = { silent = true }
 keymap.set("n", "<leader>w", ":w<CR>", opts)
 keymap.set("n", "<leader>W", ":w<CR>", opts)
 
+-- mapeia para netrw para controlar arquivos 
+keymap.set("n", "<leader>n", ":Lexplore<CR>", opts)
+
+vim.api.nvim_create_autocmd('filetype', {
+  pattern = 'netrw',
+  callback = function()
+    local opts = { buffer = true, remap = true }
+    
+    -- Agora sim: 'a' cria arquivo, 'r' renomeia, 'x' deleta
+    vim.keymap.set('n', 'a', '%', opts)
+    vim.keymap.set('n', 'r', 'R', opts)
+    vim.keymap.set('n', 'x', 'D', opts)
+    
+    -- Navegação estilo H e L (Voltar e Entrar)
+    vim.keymap.set('n', 'H', 'u', opts) -- 'u' no netrw volta um diretório
+    vim.keymap.set('n', 'L', '<CR>', opts) -- Enter para entrar
+  end
+})
+
 -- Esc para sair do terminal (Terminal Mode)
 -- Nota: no Neovim, o comando correto para voltar ao modo normal no terminal é <C-\><C-n>
 keymap.set("t", "<leader><ESC>", [[<C-\><C-n>]], opts)
