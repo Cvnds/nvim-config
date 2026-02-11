@@ -5,23 +5,23 @@ local opts = { silent = true }
 keymap.set("n", "<leader>w", ":w<CR>", opts)
 keymap.set("n", "<leader>W", ":w<CR>", opts)
 
--- mapeia para netrw para controlar arquivos 
+-- mapeia para netrw para controlar arquivos
 keymap.set("n", "<leader>n", ":Lexplore<CR>", opts)
 
-vim.api.nvim_create_autocmd('filetype', {
-  pattern = 'netrw',
-  callback = function()
-    local opts = { buffer = true, remap = true }
-    
-    -- Agora sim: 'a' cria arquivo, 'r' renomeia, 'x' deleta
-    vim.keymap.set('n', 'a', '%', opts)
-    vim.keymap.set('n', 'r', 'R', opts)
-    vim.keymap.set('n', 'x', 'D', opts)
-    
-    -- Navegação estilo H e L (Voltar e Entrar)
-    vim.keymap.set('n', 'H', 'u', opts) -- 'u' no netrw volta um diretório
-    vim.keymap.set('n', 'L', '<CR>', opts) -- Enter para entrar
-  end
+vim.api.nvim_create_autocmd("filetype", {
+	pattern = "netrw",
+	callback = function()
+		local opts = { buffer = true, remap = true }
+
+		-- Agora sim: 'a' cria arquivo, 'r' renomeia, 'x' deleta
+		vim.keymap.set("n", "a", "%", opts)
+		vim.keymap.set("n", "r", "R", opts)
+		vim.keymap.set("n", "x", "D", opts)
+
+		-- Navegação estilo H e L (Voltar e Entrar)
+		vim.keymap.set("n", "H", "u", opts) -- 'u' no netrw volta um diretório
+		vim.keymap.set("n", "L", "<CR>", opts) -- Enter para entrar
+	end,
 })
 
 -- Esc para sair do terminal (Terminal Mode)
@@ -40,7 +40,7 @@ keymap.set("n", "<A-t>l", ":tabnext<CR>", opts)
 keymap.set("n", "<A-t>k", ":tabnew<CR>", opts)
 keymap.set("n", "<A-t>j", ":tabclose<CR>", opts)
 
- -- Mapeia o <leader>c para a função nativa de comentar linha
+-- Mapeia o <leader>c para a função nativa de comentar linha
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Comentar linha" })
 
 -- Mapeia o <leader>c para comentar a seleção no modo Visual
@@ -67,3 +67,6 @@ vim.keymap.set("n", "<S-k>", vim.diagnostic.open_float, { desc = "Show diagnosti
 
 -- Abrir a lista de todos os erros do arquivo (Quickfix list)
 vim.keymap.set("n", "<S-j>", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
+
+-- Abre o menu de ações sugeridas pelo LSP para o erro/ponto sob o cursor
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
