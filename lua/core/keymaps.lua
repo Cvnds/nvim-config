@@ -6,7 +6,7 @@ keymap.set("n", "<leader>w", ":w<CR>", opts)
 keymap.set("n", "<leader>W", ":w<CR>", opts)
 
 -- mapeia para netrw para controlar arquivos
-keymap.set("n", "<leader>n", ":Lexplore<CR>", opts)
+-- keymap.set("n", "<leader>n", ":Lexplore<CR>", opts)
 
 vim.api.nvim_create_autocmd("filetype", {
 	pattern = "netrw",
