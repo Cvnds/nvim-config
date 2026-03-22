@@ -35,12 +35,17 @@ return {
 		auto_set_highlight_group = true,
 		auto_set_keymaps = true,
 	},
+
 	dependencies = {
-		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
+		"nvim-mini/mini.pick",
 		"MunifTanjim/nui.nvim",
 		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
+		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+		"ibhagwan/fzf-lua", -- for file_selector provider fzf
+		"folke/snacks.nvim", -- for input provider snacks
+		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
 		{
 			"MeanderingProgrammer/render-markdown.nvim",
 			opts = { file_types = { "markdown", "Avante" } },
